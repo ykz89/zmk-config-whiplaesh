@@ -1,0 +1,5 @@
+config SHIELD_WHIPLAESH_LEFT
+    def_bool $(shields_list_contains,whiplaesh_left)
+
+config SHIELD_WHIPLAESH_RIGHT
+    def_bool $(shields_list_contains,whiplaesh_right)

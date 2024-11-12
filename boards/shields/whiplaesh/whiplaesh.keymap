@@ -1,0 +1,57 @@
+#include <behaviors.dtsi>
+#include <dt-bindings/zmk/keys.h>
+
+/ {
+    combos {
+        compatible = "zmk,combos";
+
+        combo_bootloaderL {
+            timeout-ms = <50>;
+            key-positions = <0 4 10 14>;
+            bindings = <&bootloader>;
+        };
+
+        combo_bootloaderR {
+            timeout-ms = <50>;
+            key-positions = <5 9 15 19>;
+            bindings = <&bootloader>;
+        };
+
+        combo_studio {
+            timeout-ms = <50>;
+            key-positions = <2 3 4 5>;
+            bindings = <&studio_unlock>;
+        };
+
+        wf_q {
+            bindings = <&kp Q>;
+            key-positions = <0 1>;
+        };
+
+        uy_quote {
+            bindings = <&kp SINGLE_QUOTE>;
+            key-positions = <7 6>;
+        };
+    };
+};
+
+/ {
+    keymap {
+        compatible = "zmk,keymap";
+
+        default_layer {
+            bindings = <
+       &kp W  &kp F  &kp P   &kp B          &kp J  &kp L      &kp U    &kp Y
+&kp A  &kp R  &kp S  &kp T   &kp G   &kp M  &kp N  &kp E      &kp I    &kp O
+&kp Z  &kp X  &kp C  &kp D   &kp V   &kp K  &kp H  &kp COMMA  &kp DOT  &kp FSLH
+                     &kp N1  &kp N2                           &kp N3   &kp N4
+            >;
+        };
+
+        lower_layer { status = "reserved"; };
+
+        raise_layer { status = "reserved"; };
+
+        adjust_layer { status = "reserved"; };
+    };
+};
