@@ -4,15 +4,47 @@
  * SPDX-License-Identifier: MIT
  */
 
+ ///////// VIK SPI and connector start
+&spi2 {
+    compatible = "nordic,nrf-spim";
+    pinctrl-0 = <&spi2_vik_pmw3610_default>;
+    pinctrl-1 = <&spi2_vik_pmw3610_sleep>;
+    pinctrl-names = "default", "sleep";
+};
+
+/ {
+	vik_conn: vik_connector {
+		compatible = "sadekbaroudi,vik-connector";
+		#gpio-cells = <2>;
+		gpio-map-mask = <0xffffffff 0xffffffc0>;
+		gpio-map-pass-thru = <0 0x3f>;
+		gpio-map
+			= <0 0 &gpio0  2 0>    /* vik SDA */
+			, <1 0 &gpio0  3 0>    /* vik SCL */
+			, <2 0 &gpio0  1 0>     /* vik RGB Data */
+			, <3 0 &gpio1  20 0>     /* vik AD_1 */
+			, <4 0 &gpio0  10 0>    /* vik MOSI */
+			, <5 0 &gpio1  21 0>    /* vik AD_2 */
+			, <6 0 &gpio0  1 0>     /* vik CS */
+			, <7 0 &gpio1  4 0>    /* vik MISO */
+			, <8 0 &gpio1  9 0>    /* vik SCLK */
+			;
+	};
+};
+
+vik_spi_pmw3610: &spi2 {};
+///////// VIK SPI and connector end
+
 &pinctrl {
-    spi0_default: spi0_default {
+    // VIK SPI pinctrl start
+    spi2_vik_pmw3610_default: spi2_vik_pmw3610_default  {
         group1 {
             psels = <NRF_PSEL(SPIM_SCK, 1, 6)>,
                 <NRF_PSEL(SPIM_MOSI, 0, 9)>,
                 <NRF_PSEL(SPIM_MISO, 0, 22)>;
         };
     };
-    spi0_sleep: spi0_sleep {
+    spi2_vik_pmw3610_sleep: spi2_vik_pmw3610_sleep  {
         group1 {
             psels = <NRF_PSEL(SPIM_SCK, 1 , 6)>,
                 <NRF_PSEL(SPIM_MOSI, 0, 9)>,
@@ -20,14 +52,6 @@
             low-power-enable;
         };
     };
-};
-
-nice_view_spi: &spi0 {
-    compatible = "nordic,nrf-spim";
-    pinctrl-0 = <&spi0_default>;
-    pinctrl-1 = <&spi0_sleep>;
-    pinctrl-names = "default", "sleep";
-    cs-gpios = <&pro_micro 1 GPIO_ACTIVE_HIGH>;
 };
 
 &pro_micro_i2c {
