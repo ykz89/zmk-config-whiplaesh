@@ -1,0 +1,14 @@
+/*
+ * Copyright (c) 2020 The ZMK Contributors
+ *
+ * SPDX-License-Identifier: MIT
+ */
+
+#include "nice_nano.dtsi"
+
+&spi1 {
+    compatible = "nordic,nrf-spim";
+    pinctrl-0 = <&spi1_vik_pmw3610_default>;
+    pinctrl-1 = <&spi1_vik_pmw3610_sleep>;
+    pinctrl-names = "default", "sleep";
+};

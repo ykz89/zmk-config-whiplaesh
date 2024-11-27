@@ -19,3 +19,4 @@ manifest:
       import: config/deps.yml
   self:
     path: config
+    import: deps.yml

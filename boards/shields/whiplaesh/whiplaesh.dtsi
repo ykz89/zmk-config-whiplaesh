@@ -35,5 +35,16 @@
     chosen {
         zmk,kscan = &kscan0;
         zmk,physical-layout = &default_layout;
+        // for logging, if needed
+        zephyr,console = &cdc_acm_uart;
+    };
+};
+
+
+// for logging, if needed
+&usbd {
+    status = "okay";
+    cdc_acm_uart: cdc_acm_uart {
+        compatible = "zephyr,cdc-acm-uart";
     };
 };
