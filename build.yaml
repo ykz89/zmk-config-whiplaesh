@@ -23,7 +23,7 @@ include:
     shield: whiplaesh_left
     snippet: zmk-usb-logging
   - board: nice_nano_v2
-    shield: whiplaesh_right nice_view
+    shield: whiplaesh_right
     snippet: zmk-usb-logging
   - board: nice_nano_v2
     shield: settings_reset
