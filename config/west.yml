@@ -10,6 +10,8 @@ manifest:
       url-base: https://github.com/badjeff
     - name: sadekbaroudi
       url-base: https://github.com/sadekbaroudi
+    - name: ykz89
+      url-base: https://github.com/ykz89
     # Additional modules containing boards/shields/custom code can be listed here as well
     # See https://docs.zephyrproject.org/3.2.0/develop/west/manifest.html#projects
   projects:
@@ -18,7 +20,7 @@ manifest:
       revision: main
       import: app/west.yml
     - name: zmk-pmw3610-driver
-      remote: sadekbaroudi
+      remote: ykz89
       revision: main
     - name: zmk-helpers
       remote: urob
