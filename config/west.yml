@@ -20,7 +20,7 @@ manifest:
       revision: main
       import: app/west.yml
     - name: zmk-pmw3610-driver
-      remote: ykz89
+      remote: badjeff
       revision: main
     - name: zmk-helpers
       remote: urob
